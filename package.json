@@ -1,0 +1,19 @@
+{
+  "name": "robo-teste",
+  "version": "1.0.0",
+  "description": "Robo de teste com javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "crisciano s. botelho",
+  "license": "ISC",
+  "dependencies": {
+    "create-html": "^4.1.0",
+    "from2-string": "^1.1.0",
+    "fs": "0.0.1-security",
+    "hyperstream": "^1.2.2",
+    "readline-sync": "^1.4.9",
+    "write": "^1.0.3"
+  }
+}
