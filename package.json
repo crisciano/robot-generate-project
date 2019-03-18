@@ -9,6 +9,7 @@
   "author": "crisciano s. botelho",
   "license": "ISC",
   "dependencies": {
+    "create-dir": "^1.0.3",
     "create-html": "^4.1.0",
     "from2-string": "^1.1.0",
     "fs": "0.0.1-security",

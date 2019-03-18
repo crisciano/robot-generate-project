@@ -1,27 +1,18 @@
-let readline = require('readline-sync');
 let createHTML = require('create-html');
-
 let fs = require('fs')
-// let writeFile = require('write');
 
-var question = [
-	'quantas paginas? ',
-	'qual o titulo da pagina? '
-]
+
+let robots = {
+	dir: require('./robots/diretorios.js'),
+	question: require('./robots/questionamento.js')
+}
+
+const content = {}
 
 function start(){
-	const content = {}
-
-	content.nPaginas = setNumeroPaginas();
-	content.title = setTitle();
-
-	function setNumeroPaginas(){
-		return readline.question(question[0]);
-	}
-
-	function setTitle(){
-		return readline.question(question[1]);
-	}
+	
+	robots.question(content);
+	robots.dir(content);
 
 	function createPage(){
 		var html = createHTML({
@@ -45,7 +36,6 @@ function start(){
 	}
 
 	createPage();
-	// console.log(content);
 }
 
 start();
