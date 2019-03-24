@@ -1,24 +1,19 @@
 let createDir = require('create-dir')
 
-const strutureDir = [{ 
-	"src" : 
-		[ 'img', 'js', 'sass', 'css' ]
-}];
-
 function robot(content){
 
 	var projectName = content.nameProject;
+	var subDir = content.structuredDir.src;
 
-	async () => {
-		try {
-			await createDir( `${ projectName }`);
-		await createDir(`${ projectName }/src`);
-		} catch(error) {
-			console.error(error.message);
-		}
-	}
+	// Object.keys(structuredDir);
+	var base = `${ projectName }/${Object.keys(content.structuredDir)}`;
 
-	console.log(content);
+	createDir( `${ base }`);
+	console.log(`Created project -> ${base}`);
+	subDir.forEach((item) => {
+		createDir(`${base}/${item}`);
+		console.log(`Created subDir -> ${base}/${item}`);
+	})
 
 }
 

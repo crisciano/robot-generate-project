@@ -1,13 +1,13 @@
 let readline = require('readline-sync');
 
-const question = [
-	'Nome do projeto? ',
-	'Quantas paginas? ',
-	'qual o titulo da pagina? '
-]
+// const question = [
+// 	'Nome do projeto? ',
+// 	'Quantas paginas? ',
+// 	'qual o titulo da pagina? '
+// ]
 
 function robot(content){
-
+	var question = content.questions.question;
 	content.nameProject = setNameProject();
 	content.nPaginas = setNumeroPaginas();
 	content.title = setTitle();
