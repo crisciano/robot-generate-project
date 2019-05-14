@@ -41,17 +41,76 @@ async function robot(content){
 				}
 			]
 		};
-		var fileteste = 'ext.json'
-		
-		var fileName = 'index.html';
-		
-		// await existeBase(base, fileName, html);
-		var filePath = `${base}\\${fileName}`;
 
-		var pathteste = `${base}\\${fileteste}`;
-		
-		await createFile(fileteste, JSON.stringify(ext), pathteste)
+		var widget ={
+			"availableToAllPages": true,
+			"config": {},
+			"global": false,
+			"globalEnabled": true,
+			"i18nresources": "headerLineTop",
+			"imports": [],
+			"javascript": "script",
+			"jsEditable": true,
+			"minWidth": 1,
+			"source": 101,
+			"version": 1,
+			"translations" : [
+				{
+						"language": "en",
+						"name": `${content.nameProject}`
+				},
+				{
+						"language": "pt_BR",
+						"name": `${content.nameProject}`
+				}
+			]
+		};
+		var less = `.headerLineTop {
+				background: #fff;
+		}`;
 
+		var script =`
+			define(
+				// Dependencies
+				['jquery', 'knockout'],
+		
+				// Module Implementation
+				function($,ko) {
+						// We recommend enabling strict checking mode
+						'use strict';
+		
+						return {
+								onLoad: function(widget) {
+										console.log('Carregando widget base...');
+								}
+						}
+				}
+			);
+		`;
+
+		// cria o ext.json
+		var extFile = 'ext.json';
+		var extPath = `${base}\\${extFile}`;
+		await createFile(extFile, JSON.stringify(ext), extPath)
+
+		// cria o widget.json
+		var widgetFile = 'widget.json';
+		var widgetPath = `${base}\\${projectName}\\${widgetFile}`;
+		await createFile(widgetFile, JSON.stringify(widget), widgetPath)
+
+		// criar o widget.less
+		var lessFile = "widget.less";
+		var lessPath = `${base}\\${projectName}\\less\\${lessFile}`;
+		await createFile(lessFile, JSON.stringify(less), lessPath)
+
+		// criar o script.js
+		var scriptFile = "script.js";
+		var scriptPath = `${base}\\${projectName}\\js\\${scriptFile}`;
+		await createFile(scriptFile, JSON.stringify(script), scriptPath)
+		// criar o display.template.
+		
+		// var fileName = 'index.html';
+		// var filePath = `${base}\\${fileName}`;
 		// await createFile(fileName, fileContent, filePath)
 	}
 	
