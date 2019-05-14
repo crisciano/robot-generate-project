@@ -21,10 +21,7 @@ async function start(){
 	
 	robots.question(content);
 	await robots.dir(content);
-	setTimeout(() => {
-		robots.pages(content);
-		
-	}, 500);
+	await robots.pages(content);
 
 }
 

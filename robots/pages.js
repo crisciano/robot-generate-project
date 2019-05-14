@@ -32,7 +32,7 @@ async function robot(content){
 	async function createFile(fileName, html){
 		console.log(fileName);
 		
-		await fs.writeFileSync(`${base}\\${fileName}`, html, (err) =>{
+		await fs.writeFile(`${base}\\${fileName}`, html, (err) =>{
 			if(err){ console.log(err); return }
 			// console.log(data);
 			console.log('success');
