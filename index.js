@@ -17,11 +17,14 @@ const content = {
 	}
 }
 
-function start(){
+async function start(){
 	
 	robots.question(content);
-	robots.dir(content);
-	robots.pages(content);
+	await robots.dir(content);
+	setTimeout(() => {
+		robots.pages(content);
+		
+	}, 500);
 
 }
 

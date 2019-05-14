@@ -1,14 +1,16 @@
 let createHTML = require('create-html');
 let fs = require('fs');
+// const upath = require("upath")
+var path = require('path');
 
-function robot(content){
+async function robot(content){
 	var projectName = content.nameProject;
-	var base = `${ projectName }/${Object.keys(content.structuredDir)}`;
+	var base = `${projectName}\\${Object.keys(content.structuredDir)}`;
 
 	console.log(content);
 	
 
-	function createPage(){
+	async function createPage(){
 		var html = createHTML({
 		  title: content.title,
 		  script: 'example.js',
@@ -22,15 +24,28 @@ function robot(content){
 		})
 
 		var fileName = 'index.html';
-		var stream = fs.createWriteStream(`${fileName}`)
+		// await existeBase(base, fileName, html);
 
-		// stream.once('open', (fd)=>{
-		// 	stream.end(html);
-		// })
-		fs.readFile('/etc/passwd', (err, data) => {
-			if (err) console.log(err);
-			console.log(data);
-		});
+		await createFile(fileName, html)
+	}
+	
+	async function createFile(fileName, html){
+		console.log(fileName);
+		
+		await fs.writeFileSync(`${base}\\${fileName}`, html, (err) =>{
+			if(err){ console.log(err); return }
+			// console.log(data);
+			console.log('success');
+		})
+	}
+
+	async function existeBase(base, file, content){
+		if(!fs.existsSync(base)){ 
+			fs.mkdirSync(base, { recursive: true }, (err)=>{
+				if(err) console.log(err);
+			})
+		}
+		await createFile(file, content);
 	}
 
 	createPage();

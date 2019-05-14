@@ -4,16 +4,18 @@ function robot(content){
 
 	var projectName = content.nameProject;
 	var subDir = content.structuredDir.src;
-
-	// Object.keys(structuredDir);
 	var base = `${ projectName }/${Object.keys(content.structuredDir)}`;
 
-	createDir( `${ base }`);
+	// return new Promise( (resolve, reject)=> {
+
+	// })
+	createDir(base);
 	console.log(`Created project -> ${base}`);
-	subDir.forEach((item) => {
+	subDir.map((item) => {
 		createDir(`${base}/${item}`);
 		console.log(`Created subDir -> ${base}/${item}`);
 	})
+
 
 }
 
