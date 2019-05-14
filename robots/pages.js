@@ -8,10 +8,9 @@ async function robot(content){
 	var base = `${projectName}\\${Object.keys(content.structuredDir)}`;
 
 	console.log(content);
-	
 
 	async function createPage(){
-		var html = createHTML({
+		var fileContent = createHTML({
 		  title: content.title,
 		  script: 'example.js',
 		  scriptAsync: true,
@@ -23,29 +22,47 @@ async function robot(content){
 		  favicon: 'favicon.png'
 		})
 
+		var ext = {
+			"extensionID": `${content.extensionID}`,
+			"developerID": "crisciano.botelho",
+			"createdBy"  : "Compasso",
+			"version"    : 1,
+			"timeCreated": "2019-05-02",
+			"translations": [
+				{
+					"language": "en",
+					"name": `${content.nameProject}`,
+					"description": `${content.description}`
+				},
+				{
+					"language": "pt_BR",
+					"name":  `${content.nameProject}`,
+					"description": `${content.description}`
+				}
+			]
+		};
+		var fileteste = 'ext.json'
+		
 		var fileName = 'index.html';
+		
 		// await existeBase(base, fileName, html);
+		var filePath = `${base}\\${fileName}`;
 
-		await createFile(fileName, html)
+		var pathteste = `${base}\\${fileteste}`;
+		
+		await createFile(fileteste, JSON.stringify(ext), pathteste)
+
+		// await createFile(fileName, fileContent, filePath)
 	}
 	
-	async function createFile(fileName, html){
+	async function createFile(fileName, fileContent, filePath){
 		console.log(fileName);
 		
-		await fs.writeFile(`${base}\\${fileName}`, html, (err) =>{
+		await fs.writeFile(filePath, fileContent, (err) =>{
 			if(err){ console.log(err); return }
 			// console.log(data);
 			console.log('success');
 		})
-	}
-
-	async function existeBase(base, file, content){
-		if(!fs.existsSync(base)){ 
-			fs.mkdirSync(base, { recursive: true }, (err)=>{
-				if(err) console.log(err);
-			})
-		}
-		await createFile(file, content);
 	}
 
 	createPage();

@@ -6,15 +6,22 @@ let robots = {
 
 const content = {
 	'structuredDir' : { 
-		"src" : [ 'img', 'js', 'sass', 'css' ]
+		"widget" : [ 'js', 'less', 'locales', 'templates' ]
 	},
+	'language': ['en', 'pt-BR'],
 	'questions': {
 		"question": [
-			'Nome do projeto? ',
-			'Quantas paginas? ',
-			'qual o titulo da pagina? '
+			'Nome do widget? (widgetExample) ',
+			'Descrição curta do widget? ',
+			'Id gerada para o widget? (extensionID) '
 		]
-	}
+	},
+	'pages': [
+		{ 'dir': '', 'page': 'ext.json'},
+		{ 'dir': '', 'page': 'widget.json'},
+		{ 'dir': '', 'page': 'script.js'},
+		{ 'dir': '', 'page': 'widget.less'},
+	]
 }
 
 async function start(){
