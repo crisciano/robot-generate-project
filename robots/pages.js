@@ -1,6 +1,5 @@
 let createHTML = require('create-html');
 let fs = require('fs');
-// const upath = require("upath")
 var path = require('path');
 
 async function robot(content){
