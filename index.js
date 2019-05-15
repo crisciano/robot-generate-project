@@ -1,7 +1,9 @@
 let robots = {
 	dir: require('./robots/diretorios.js'),
 	question: require('./robots/questionamento.js'),
-	pages: require('./robots/pages.js')
+	confPages: require('./robots/confPages.js'),
+	pages: require('./robots/pages.js'),
+	zipWidget: require('./robots/zipWidget.js')
 }
 
 const content = {
@@ -15,20 +17,18 @@ const content = {
 			'Descrição curta do widget? ',
 			'Id gerada para o widget? (extensionID) '
 		]
-	},
-	'pages': [
-		{ 'dir': '', 'page': 'ext.json'},
-		{ 'dir': '', 'page': 'widget.json'},
-		{ 'dir': '', 'page': 'script.js'},
-		{ 'dir': '', 'page': 'widget.less'},
-	]
+	}
 }
 
 async function start(){
 	
 	robots.question(content);
 	await robots.dir(content);
+	await robots.confPages(content);
 	await robots.pages(content);
+	setTimeout(() => {
+		robots.zipWidget(content);
+	}, 1000);
 
 }
 

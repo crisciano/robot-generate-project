@@ -15,8 +15,10 @@
     "from2-string": "^1.1.0",
     "fs": "0.0.1-security",
     "hyperstream": "^1.2.2",
+    "jszip": "^3.2.1",
     "readline-sync": "^1.4.9",
     "upath": "^1.1.2",
-    "write": "^1.0.3"
+    "write": "^1.0.3",
+    "zip-folder": "^1.0.0"
   }
 }
