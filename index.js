@@ -1,4 +1,5 @@
 let robots = {
+	welcome: require('./robots/welcome.js'),
 	dir: require('./robots/diretorios.js'),
 	question: require('./robots/questionamento.js'),
 	confPages: require('./robots/confPages.js'),
@@ -15,13 +16,15 @@ const content = {
 		"question": [
 			'Nome do widget? (widgetExample) ',
 			'Descrição curta do widget? ',
-			'Id gerada para o widget? (extensionID) '
+			'Id gerada para o widget? (extensionID) ',
+			'Selecione quais linguagens vão ser usadas: '
 		]
-	}
+	},
+	'languageDefault': ['en', 'pt_BR', 'de', 'rs']
 }
 
 async function start(){
-	
+	robots.welcome();
 	robots.question(content);
 	await robots.dir(content);
 	await robots.confPages(content);

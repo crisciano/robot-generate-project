@@ -10,9 +10,13 @@
   "author": "crisciano s. botelho",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.2",
     "create-dir": "^1.0.3",
     "create-html": "^4.1.0",
+    "figlet": "^1.2.1",
     "fs": "0.0.1-security",
+    "inquirer": "^6.3.1",
+    "prompt-checkbox": "^2.2.0",
     "readline-sync": "^1.4.9",
     "rimraf": "^2.6.3",
     "write": "^1.0.3",
