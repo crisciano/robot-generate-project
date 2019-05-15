@@ -11,51 +11,44 @@ async function robot(content){
   var scriptFile = "script.js";
   var templateFile = "display.template";
   var nsFile = "ns.headerLineTop.json";
-  var language = content.language;
+  var languages = content.language;
+
+  var eTranslations = [];
+  var wTranslations = [];
+
+  languages.map(language=>{
+    eTranslations.push({
+      "language": language, 
+      "name": `${content.nameProject}`,
+      "description": `${content.description}`})
+    wTranslations.push({ 
+      "language": language, 
+      "name": `${content.nameProject}`})
+  })
 
   var extJson = {
-    "extensionID": `${content.extensionID}`,
+    "extensionID": content.extensionID,
     "developerID": "crisciano.botelho",
     "createdBy"  : "Compasso",
     "version"    : 1,
-    "timeCreated": "2019-05-02",
-    "translations": [
-      {
-        "language": "en",
-        "name": `${content.nameProject}`,
-        "description": `${content.description}`
-      },
-      {
-        "language": "pt_BR",
-        "name":  `${content.nameProject}`,
-        "description": `${content.description}`
-      }
-    ]
+    "timeCreated": getDate(),
+    "translations": eTranslations
   };
   var ext = JSON.stringify(extJson, null, 4);
 
-  var widgetJson ={
+  var widgetJson = {
     "availableToAllPages": true,
     "config": {},
     "global": false,
     "globalEnabled": true,
     "i18nresources": "headerLineTop",
     "imports": [],
-    "javascript": "script.js",
+    "javascript": "script",
     "jsEditable": true,
     "minWidth": 1,
     "source": 101,
     "version": 1,
-    "translations" : [
-      {
-          "language": "en",
-          "name": `${content.nameProject}`
-      },
-      {
-          "language": "pt_BR",
-          "name": `${content.nameProject}`
-      }
-    ]
+    "translations" : wTranslations
   };
   var widget = JSON.stringify(widgetJson, null, 4);
 
@@ -104,41 +97,50 @@ async function robot(content){
    })
   // conf page widget.json
   pages.push({ 
-    "extPath": `${base}\\${projectName}\\${widgetFile}`, 
+    "extPath": `${base}\\widget\\${projectName}\\${widgetFile}`, 
     "extFile": `${widgetFile}`,
     "extContent": `${widget}` 
    })
   // conf page widget.less
   pages.push({
-    "extPath": `${base}\\${projectName}\\less\\${lessFile}`,
+    "extPath": `${base}\\widget\\${projectName}\\less\\${lessFile}`,
     "extFile": `${lessFile}`,
     "extContent": `${less}`
   })
 
   // conf page script.js
   pages.push({ 
-    "extPath": `${base}\\${projectName}\\js\\${scriptFile}`,
+    "extPath": `${base}\\widget\\${projectName}\\js\\${scriptFile}`,
     "extFile": `${scriptFile}`,
     "extContent": `${script}`
   })
 
   // conf page display.template
   pages.push({
-    "extPath": `${base}\\${projectName}\\templates\\${templateFile}`,
+    "extPath": `${base}\\widget\\${projectName}\\templates\\${templateFile}`,
     "extFile": `${templateFile}`,
     "extContent": `${template}`
   })
 
-  await language.map((item)=>{
+  await languages.map((item)=>{
     // return paste
     pages.push({
-      "extPath": `${base}\\${projectName}\\locales\\${item}\\${nsFile}`,
+      "extPath": `${base}\\widget\\${projectName}\\locales\\${item}\\${nsFile}`,
       "extFile": `${nsFile}`,
       "extContent": `${ns}`
     })
 	})
 
   content.pages = pages;
+
+  function getDate(){
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0'); 
+
+    return `${year}-${month}-${day}`;
+  }
   
 }
 

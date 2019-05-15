@@ -10,7 +10,7 @@ const content = {
 	'structuredDir' : { 
 		"widget" : [ 'js', 'less', 'locales', 'templates' ]
 	},
-	'language': ['en', 'pt-BR'],
+	'language': ['en', 'pt_BR'],
 	'questions': {
 		"question": [
 			'Nome do widget? (widgetExample) ',

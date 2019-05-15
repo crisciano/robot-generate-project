@@ -1,10 +1,8 @@
 let createHTML = require('create-html');
 let fs = require('fs');
-var path = require('path');
 
 async function robot(content){
 	var projectName = content.nameProject;
-	var base = `${projectName}\\${Object.keys(content.structuredDir)}`;
 
 	async function createPage(){
 		var fileContent = createHTML({

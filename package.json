@@ -1,6 +1,6 @@
 {
   "name": "robo-teste",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Robo de teste com javascript",
   "main": "index.js",
   "scripts": {

@@ -5,9 +5,9 @@ async function robot(content){
 	var projectName = content.nameProject;
 	var subDir = content.structuredDir.widget;
 	var language = content.language;
-	content.base = `${ projectName }`;
+	content.base = projectName;
 	// var base = `${ projectName }/${Object.keys(content.structuredDir)}`;
-	var base = content.base;
+	var base = `${content.base}/${Object.keys(content.structuredDir)}`;
 
 	await createDir(base);
 	console.log(`Created project -> ${base}`);
