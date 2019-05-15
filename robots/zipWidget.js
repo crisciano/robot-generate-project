@@ -7,8 +7,6 @@ async function robot(content){
   
   async function zipContent(){
     var nameProject = content.nameProject;
-    console.log(content.base);
-
     await fs.readdir(content.base, (err,data)=>{
       if(err)console.log(err);
 
