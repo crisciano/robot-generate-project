@@ -26,10 +26,7 @@ async function start(){
 	await robots.dir(content);
 	await robots.confPages(content);
 	await robots.pages(content);
-	setTimeout(() => {
-		robots.zipWidget(content);
-	}, 1000);
-
+	await robots.zipWidget(content);
 }
 
 start();

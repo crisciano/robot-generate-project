@@ -1,6 +1,6 @@
 let fs = require('fs');
-let jszip = require('jszip');
 let folderZip = require('zip-folder');
+let rmkdir = require('rimraf');
 
 async function robot(content){
 
@@ -14,15 +14,20 @@ async function robot(content){
         folderZip(`.\\${content.base}`, `.\\${nameProject}.zip`, 
           (err)=> {
             if(err) console.log(err);
+            deleteFolder(`.\\${content.base}`);
             console.log(`Create zip ->  ${nameProject}.zip`);
         })
       }
     })
   }
 
-  await zipContent();
-  
+  async function deleteFolder(path){
+    await rmkdir(path, ()=>{
+      console.log(`Widget folder delete success.`);
+    })
+  }
 
+  await zipContent();
 }
 
 module.exports = robot
