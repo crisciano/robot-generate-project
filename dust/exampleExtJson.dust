@@ -1,0 +1,16 @@
+{
+    "extensionID": {extensionID},
+    "developerID": "crisciano.botelho",
+    "createdBy"  : "Compasso",
+    "version"    : 1,
+    "timeCreated": "{data}",
+    "translations": [
+        {#eTranslations}
+            {
+                "language": "{language}",
+                "name": "{name}",
+                "description": "{description}" {~n}
+            }
+        {/eTranslations}
+    ]
+}

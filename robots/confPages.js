@@ -77,6 +77,9 @@ async function robot(content){
         return {
             onLoad: function(widget) {
                 console.log('Carregando widget base...');
+            },
+            beforeAppear: function(page) {
+              // Code to run before showing the widget here.
             }
         }
     }

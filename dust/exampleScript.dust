@@ -1,0 +1,16 @@
+define(
+    // Dependencies
+    ['jquery', 'knockout'],
+
+    // Module Implementation
+    function($,ko) {
+        // We recommend enabling strict checking mode
+        'use strict';
+
+        return {
+            onLoad: function(widget) {
+                console.log('Carregando widget base...');
+            }
+        }
+    }
+);

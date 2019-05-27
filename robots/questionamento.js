@@ -8,12 +8,15 @@ let inquirer = require('inquirer');
 // 	'qual o titulo da pagina? '
 // ]
 
-function robot(content){
+async function robot(content){
 	var question = content.questions.question;
-	// content.teste = setTeste();
+	// content.teste = await setTeste();
 	content.nameProject = setNameProject();
 	content.extensionID = setExtension();
 	content.description = setDescription();
+
+	
+	// await setTeste();
 
 	function setNameProject(){
 		return readline.question(question[0]);
@@ -38,7 +41,8 @@ function robot(content){
 			}
 		];
 
-		inquirer.prompt(questions);
+		inquirer.prompt(questions)
+			.then(answers=> console.log(answers))
 		
 		// var prompt = new Prompt({
 		// 	name: 'lag',
@@ -59,7 +63,6 @@ function robot(content){
 		// prompt.ask(function(answers) {
 		// 	console.log(answers)
 		// });
-
 	}
 
 }
